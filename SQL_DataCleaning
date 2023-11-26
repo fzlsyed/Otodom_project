@@ -1,0 +1,28 @@
+SELECT replace(json_data:price,'""')
+FROM OTODOM_DATA_DUMP
+LIMIT 10;
+
+CREATE OR REPLACE table otodom_data_flatten
+as
+select row_number() over(order by title) as rn
+, x.*
+from (
+select replace(json_data:advertiser_type,'"')::string as advertiser_type
+, replace(json_data:balcony_garden_terrace,'"')::string as balcony_garden_terrace
+, regexp_replace(replace(json_data:description,'"'), '<[^>]+>')::string as description
+, replace(json_data:heating,'"')::string as heating
+, replace(json_data:is_for_sale,'"')::string as is_for_sale
+, replace(json_data:lighting,'"')::string as lighting
+, replace(json_data:location,'"')::string as location
+, replace(json_data:price,'"')::string as price
+, replace(json_data:remote_support,'"')::string as remote_support
+, replace(json_data:rent_sale,'"')::string as rent_sale
+, replace(json_data:surface,'"')::string as surface
+, replace(json_data:timestamp,'"')::date as timestamp
+, replace(json_data:title,'"')::string as title
+, replace(json_data:url,'"')::string as url
+, replace(json_data:form_of_property,'"')::string as form_of_property
+, replace(json_data:no_of_rooms,'"')::string as no_of_rooms
+, replace(json_data:parking_space,'"')::string as parking_space
+from otodom_data_dump 
+) x;
