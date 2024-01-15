@@ -1,3 +1,5 @@
+# Loads translated title data from Google Sheets into SnowflakeSQL
+
 import pandas as pd
 from snowflake.sqlalchemy import URL
 from sqlalchemy import create_engine
@@ -9,9 +11,9 @@ from gspread_dataframe import get_as_dataframe, set_with_dataframe
 start_time = time.time()
 
 engine = create_engine(URL(
-                    account = 'ceiknnc-keb24333',
-                    user = 'thoufiq',
-                    password = 'Admin$1234',
+                    account = 'cjekfuw-kdb12867',
+                    user = 'fs487',
+                    password = 'PASSWORD!',
                     database = 'demo',
                     schema = 'public',
                     warehouse = 'demo_wh'))
