@@ -15,7 +15,7 @@ geolocator = Nominatim(user_agent="otodom")
 engine = create_engine(URL(
                     account = 'cjekfuw-kdb12867',
                     user = 'fs487',
-                    password = 'Sfaaz0806!',
+                    password = 'PASSWORD!',
                     database = 'demo',
                     schema = 'public',
                     warehouse = 'demo_wh'))
