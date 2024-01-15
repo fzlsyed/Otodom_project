@@ -1,3 +1,5 @@
+// This SQL code flattens the data retrieved from Otodom via web scraper 
+
 SELECT replace(json_data:price,'""')
 FROM OTODOM_DATA_DUMP
 LIMIT 10;
