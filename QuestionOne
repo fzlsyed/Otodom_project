@@ -1,0 +1,17 @@
+select city, round(avg_rent_1R,2) as avg_rent_1R
+	, round(avg_rent_2R,2) as avg_rent_2R, round(avg_rent_3R,2) as avg_rent_3R
+	, round(avg_rent_4R,2) as avg_rent_4R
+	from (
+	    select city,no_of_rooms,price_new
+	    from otodom_data_transformed
+	    where city in ('Warszawa', 'Wrocław', 'Kraków', 'Gdańsk', 'Katowice', 'Łódź')
+	    and apartment_flag = 'apartment'
+	    and is_for_sale='false' 
+	    and no_of_rooms in (1,2,3,4)) x
+	pivot 
+	    (
+	        avg(price_new)
+	        for no_of_rooms in ('1','2','3','4')
+	    ) 
+	    as p(city,avg_rent_1R, avg_rent_2R, avg_rent_3R, avg_rent_4R)
+	order by avg_rent_4R desc 
