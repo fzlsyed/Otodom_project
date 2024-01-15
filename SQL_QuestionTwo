@@ -1,0 +1,8 @@
+select city, avg(surface_new) avg_area
+	from otodom_data_transformed
+	where city in ('Warszawa', 'Wrocław', 'Kraków', 'Gdańsk', 'Katowice', 'Łódź')
+	and apartment_flag = 'apartment'
+	and is_for_sale = 'false'
+	and price_new between 3000 and 4000
+	group by city
+	order by avg_area;	
