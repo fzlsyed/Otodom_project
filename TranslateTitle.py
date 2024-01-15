@@ -20,37 +20,50 @@ with engine.connect() as conn:
     try:
         query = """ SELECT RN, TITLE FROM otodom_data_flatten ORDER BY rn limit 300"""
 
+        # Loads data into pandas data frame
         df = pd.read_sql(query,conn)
 
+        # Connects Python to Google Sheets
+      
         gc = gspread.service_account()
 
         loop_counter = 0
         chunk_size = 100
         file_name = 'OTODOM_ANALYSIS_'
-        user_email = 'demo.tfq@gmail.com'
+        user_email = 'syedfazlur04@gmail.com'
 
+        # Creates one spreadsheet for every 100 titles
+      
         for i in range(0,len(df),chunk_size):
             loop_counter += 1
             df_in = df.iloc[i:(i+chunk_size), :]
 
+            # Names spreadsheet using the file name along with a loop iteration number 
+          
             spreadsheet_title = file_name + str(loop_counter)
             try:
                 locals()['sh'+str(loop_counter)] = gc.open(spreadsheet_title)
             except gspread.SpreadsheetNotFound:
                 locals()['sh'+str(loop_counter)] = gc.create(spreadsheet_title)
 
+            # Shares spreadsheet with my email 
+          
             locals()['sh'+str(loop_counter)].share(user_email, perm_type='user', role='writer')
             wks = locals()['sh'+str(loop_counter)].get_worksheet(0)
             wks.resize(len(df_in)+1)
             set_with_dataframe(wks, df_in)   
-                
+
+            # Creates column for translation 
+          
             column = 'C'   # Column to apply the formula 
             start_row = 2  # Starting row to apply the formula
             end_row = wks.row_count   # Ending row to apply the formula
             cell_range = f'{column}{start_row}:{column}{end_row}' 
             curr_row = start_row
             cell_list = wks.range(cell_range)
-            
+
+            # Sets Google Sheets formula to translate each title from Polish to English
+          
             for cell in cell_list:
                 cell.value = f'=GOOGLETRANSLATE(B{curr_row},"pl","en")'
                 curr_row += 1
@@ -59,7 +72,7 @@ with engine.connect() as conn:
             wks.update_cells(cell_list, value_input_option='USER_ENTERED')
 
             print(f'Spreadsheet {spreadsheet_title} created!')
-
+          
             df_log = pd.DataFrame({'ID':[loop_counter], 'SPREADSHEET_NAME':[spreadsheet_title]})
             df_log.to_sql('otodom_data_log', con=engine, if_exists='append', index=False, chunksize=16000, method=pd_writer)
 
