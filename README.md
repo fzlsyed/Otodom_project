@@ -18,12 +18,16 @@ The file **'TranslateTitle.py'** contains the Python code that was used to trans
 ### Step 3: Analysis 
 Using the cleaned data, the following questions are answered.
 
-1) What is the average rental price of 1 room, 2 room, 3 room and 4 room apartments in some of the major cities in Poland? The code for this can be found in the file **'QuestionOne'**
-2) What are the most expensive apartments in major cities of Poland? The code for this can be found in the file **'QuestionTwo'**
+1) What is the average rental price of 1 room, 2 room, 3 room and 4 room apartments in some of the major cities in Poland? The code for this can be found in the file **'SQL_QuestionOne'**
+2) What size of an apartment can I expect with a monthly rent of 3000 to 4000 PLN in different major cities of Poland? The code for this can be found in the file **'SQL_QuestionTwo'**
 
 **Answers**
 
 
 1)
  <img width="931" alt="Screenshot 2024-01-15 at 3 36 53 PM" src="https://github.com/fzlsyed/Otodom_project/assets/138619462/31ab0175-1646-4666-8b0a-1d59ae92a5b4">
+
 2)
+<img width="342" alt="Screenshot 2024-01-15 at 3 57 10 PM" src="https://github.com/fzlsyed/Otodom_project/assets/138619462/f80a5368-828d-478b-a5d6-6eaa662c2fae">
+
+
