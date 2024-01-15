@@ -22,5 +22,6 @@ Using the cleaned data, the following questions are answered.
 2) What are the most expensive apartments in major cities of Poland? The code for this can be found in the file **'QuestionTwo'**
 
 **Answers**
-1) <img width="931" alt="Screenshot 2024-01-15 at 3 36 53 PM" src="https://github.com/fzlsyed/Otodom_project/assets/138619462/31ab0175-1646-4666-8b0a-1d59ae92a5b4">
+1)
+ <img width="931" alt="Screenshot 2024-01-15 at 3 36 53 PM" src="https://github.com/fzlsyed/Otodom_project/assets/138619462/31ab0175-1646-4666-8b0a-1d59ae92a5b4">
 2)
