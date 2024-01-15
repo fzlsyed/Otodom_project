@@ -1,8 +1,0 @@
-// This SQL code flattens the longitude and latitude data
-
-SELECT RN, concat(latitude,',',longitude) as LOCATION
-FROM (SELECT RN 
-        , SUBSTR(location, REGEXP_INSTR(location,' ',1,4)+1) AS LATITUDE
-        , SUBSTR(location, REGEXP_INSTR(location,' ',1,1)+1, (REGEXP_INSTR(location,' ',1,1) - 1) ) AS LONGITUDE 
-    FROM otodom_data_flatten WHERE rn between 1 and 100
-    ORDER by rn )
