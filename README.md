@@ -16,7 +16,7 @@ The file **'Address.py'** contains the Python code that was used to convert lati
 The file **'TranslateTitle.py'** contains the Python code that was used to translate the real estate title data from Polish into English. This was done using the pandas library along with Google Cloud's Google Drive and Google Sheets APIs which allowed for the data to be parsed into Google Sheets and then translated using a formula. The **'SheetstoSnowflake.py'** file is the Python code that was then used to parse the translated data back into SnowflakeSQL. 
 
 ### Step 3: Analysis 
-Using the cleaned data, the following questions are answered.
+Using the cleaned data, the following analysis was conducted.
 
 1) What is the average rental price of 1 room, 2 room, 3 room and 4 room apartments in some of the major cities in Poland? The code for this can be found in the file **'SQL_QuestionOne'**
 2) What size of an apartment can I expect with a monthly rent of 3000 to 4000 PLN in different major cities of Poland? The code for this can be found in the file **'SQL_QuestionTwo'**
