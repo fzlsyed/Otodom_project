@@ -1,4 +1,4 @@
-# Otodom_project
+# Polish Real Estate Analysis
 This repository contains the code for a project that uses Bright Data to scrape real estate data from the website Otodom. SnowflakeSQL and Python are then used to clean and analyze the real estate data. 
 
 ## Step-by-Step Process 
